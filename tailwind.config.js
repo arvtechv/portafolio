@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,14 +8,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#0A0A0A",
-        primary: "#FF4D00",
-        secondary: "#FF9F1C",
-        accent: "#FFFFFF",
-        muted: "#1A1A1A",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
+      },
+      animation: {
+        "fade-in": "fadeIn 0.5s ease-in-out",
+        "slide-up": "slideUp 0.5s ease-out",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        slideUp: {
+          "0%": { transform: "translateY(20px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
       },
     },
   },

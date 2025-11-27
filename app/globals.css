@@ -1,30 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  background-color: #0a0a0a;
-  color: #ffffff;
   font-family: "Inter", sans-serif;
-}
-
-
-
-/* Animación suave */
-.fade-in {
-  animation: fadeIn 1s ease-in-out forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

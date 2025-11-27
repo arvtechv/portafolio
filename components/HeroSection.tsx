@@ -1,112 +1,129 @@
-// components/HeroSection.tsx
 "use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section id="home" className="relative overflow-hidden">
-      {/* background subtle radial glows */}
-      <div className="absolute -left-28 -top-24 w-72 h-72 rounded-full bg-[#2b0b0b] opacity-60 blur-3xl pointer-events-none" />
-      <div className="absolute right-0 bottom-0 w-96 h-72 rounded-full bg-[#2b1208] opacity-60 blur-3xl pointer-events-none" />
+    <section id="home" className="relative overflow-hidden pt-20 min-h-screen flex items-center">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-950 dark:to-black" />
+      <div className="absolute -left-28 -top-24 w-72 h-72 rounded-full bg-blue-500/10 dark:bg-blue-500/20 blur-3xl pointer-events-none" />
+      <div className="absolute right-0 bottom-0 w-96 h-72 rounded-full bg-purple-500/10 dark:bg-purple-500/20 blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-28 flex flex-col md:flex-row items-center gap-12">
-        {/* LEFT: text */}
-        <div className="w-full md:w-1/2">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            <span className="inline-block text-sm px-4 py-1 rounded-full border border-[#3a2a2a] text-[#f2b6a6] bg-[rgba(255,255,255,0.02)]">
-              Full Stack Developer
-            </span>
-
-            <h1 className="mt-4 text-4xl md:text-6xl font-extrabold leading-tight text-white">
-              Desarrollo <br />
-              <span className="text-[#e94e3c]">Soluciones Digitales</span>{" "}
-              <span className="text-white">Completas</span>
-            </h1>
-
-            {/* animated underline under "Soluciones Digitales" */}
-            <div className="mt-[-12px]">
-              <span className="inline-block w-36 h-1 bg-[#f89f3c] rounded-sm transform origin-left scale-x-100" />
-            </div>
-
-            <p className="mt-6 text-gray-300 max-w-md">
-              Desde el diseño visual hasta la arquitectura del backend. Transformo
-              ideas en aplicaciones multiplataforma funcionales con Flutter, Next.js
-              y tecnologías modernas.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <motion.a
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                href="#portfolio"
-                className="inline-flex items-center gap-3 px-6 py-3 bg-[#e94e3c] text-white rounded-lg shadow-lg"
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 relative z-10">
+        <div className="flex flex-col md:flex-row items-center gap-12">
+          {/* LEFT: Text Content */}
+          <div className="w-full md:w-1/2 text-center md:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="flex justify-center md:justify-start"
               >
-                Ver Proyectos →
-              </motion.a>
+                <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-gray-200 dark:border-gray-700 shadow-xl">
+                  <Image
+                    src="/avatar.jpg"
+                    alt="Carlos del Ángel"
+                    width={160}
+                    height={160}
+                    className="object-cover w-full h-full"
+                    priority
+                  />
+                </div>
+              </motion.div>
 
-              <motion.a
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                href="#contact"
-                className="inline-flex items-center gap-3 px-5 py-3 border border-[#3b3b3b] text-gray-200 rounded-lg bg-[rgba(255,255,255,0.02)]"
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
               >
-                Contáctame ✉️
-              </motion.a>
-            </div>
+                <span className="text-gray-900 dark:text-white">Hola, soy</span>
+                <br />
+                <span className="text-blue-600 dark:text-blue-400">Carlos del Ángel</span>
+              </motion.h1>
 
-            <ul className="mt-6 flex flex-wrap gap-6 text-sm text-gray-400">
-              <li className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#f89f3c]" /> Apps Multiplataforma
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#e94e3c]" /> Diseño UI/UX Moderno
-              </li>
-            </ul>
-          </motion.div>
-        </div>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto md:mx-0"
+              >
+                Ingeniero en sistemas, desarrollador web y creador de experiencias digitales.
+                Transformo ideas en aplicaciones funcionales y elegantes.
+              </motion.p>
 
-        {/* RIGHT: image with floating badges */}
-        <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="relative w-[520px] max-w-full rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
-          >
-            {/* Replace /hero.png with your image in public/hero.png */}
-            <Image
-              src="/hero.png"
-              alt="UI UX mockup"
-              width={520}
-              height={320}
-              className="object-cover w-full h-auto block"
-            />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-wrap gap-4 justify-center md:justify-start pt-4"
+              >
+                <motion.a
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="#contacto"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-lg transition font-medium"
+                >
+                  Contáctame
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="#portafolio"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 rounded-lg transition font-medium"
+                >
+                  Ver Proyectos
+                </motion.a>
+              </motion.div>
+            </motion.div>
+          </div>
 
-            {/* bottom-left badge */}
-            <div className="absolute -left-4 -bottom-6 bg-[#f89f3c] text-black px-4 py-3 rounded-lg shadow-lg">
-              <div className="font-bold text-lg">100+</div>
-              <div className="text-xs">Proyectos Completados</div>
-            </div>
-
-            {/* top-right badge */}
-            <div className="absolute -right-4 -top-6 bg-[#e94e3c] text-white px-4 py-3 rounded-lg shadow-lg">
-              <div className="font-bold text-lg">10+</div>
-              <div className="text-xs">Años de Experiencia</div>
-            </div>
-          </motion.div>
+          {/* RIGHT: Decorative Element or Image */}
+          <div className="w-full md:w-1/2 flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="w-full max-w-md h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 dark:from-blue-500/10 dark:to-purple-500/10 rounded-2xl backdrop-blur-sm border border-gray-200 dark:border-gray-800 shadow-2xl flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/inicial.png"
+                  alt="Imagen inicial"
+                  width={400}
+                  height={400}
+                  className="object-contain w-full h-full"
+                  priority
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
-      {/* small down chevron */}
-      <div className="w-full flex justify-center">
-        <div className="text-gray-300 animate-bounce">⌄</div>
-      </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          <ChevronDown className="w-6 h-6 text-gray-400 dark:text-gray-600" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
