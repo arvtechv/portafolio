@@ -1,14 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Smartphone, Globe, Server, Box } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Smartphone, Globe, Server, Gamepad2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function AboutSection() {
   const skills = [
     {
       icon: Smartphone,
       title: "Apps Móviles",
-      tech: "Flutter & React Native",
+      tech: "Flutter, React Native & Swift",
       color: "bg-red-500",
     },
     {
@@ -24,22 +26,65 @@ export default function AboutSection() {
       color: "bg-gray-800",
     },
     {
-      icon: Box,
-      title: "Diseño 3D",
-      tech: "Blender",
-      color: "bg-gray-800",
+      icon: Gamepad2,
+      title: "Game Dev",
+      tech: "Unity 3D & Unreal Engine",
+      color: "bg-purple-600",
     },
   ];
+
+  const recentProjects = [
+    {
+      title: "Carreras K-POP",
+      image: "/ckpop.png",
+      color: "from-purple-600 to-blue-600"
+    },
+    {
+      title: "Nomad Manager",
+      image: "/nomadmanager_real.png",
+      color: "from-blue-600 to-cyan-600"
+    },
+    {
+      title: "Calculadora Flutter",
+      image: "/calculadora.png",
+      color: "from-red-600 to-orange-600"
+    }
+  ];
+
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentProjectIndex((prev) => (prev + 1) % recentProjects.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [recentProjects.length, isPaused]);
+
+  const nextProject = () => {
+    setCurrentProjectIndex((prev) => (prev + 1) % recentProjects.length);
+    setIsPaused(true); // Pause interacting manually
+  };
+
+  const prevProject = () => {
+    setCurrentProjectIndex((prev) => (prev - 1 + recentProjects.length) % recentProjects.length);
+    setIsPaused(true);
+  };
+
+  const togglePause = () => {
+    setIsPaused(!isPaused);
+  };
 
   return (
     <section id="sobremí" className="relative py-20 overflow-hidden bg-white dark:bg-gray-900">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900" />
       
-      <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
+      <div className="max-w-[1920px] mx-auto px-6 md:px-10 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* LEFT: UI/UX Graphic */}
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+          <div className="w-full lg:w-1/2 flex justify-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -48,82 +93,80 @@ export default function AboutSection() {
               className="relative"
             >
               {/* Main UI/UX Container */}
-              <div className="relative w-full max-w-md h-96 bg-gray-900 rounded-2xl border-2 border-red-500 p-6 shadow-2xl overflow-hidden">
-                {/* UI/UX Elements inside */}
-                <div className="absolute inset-6 flex flex-col gap-3">
-                  {/* Search bar */}
-                  <div className="bg-blue-600/40 rounded-lg px-4 py-2.5 text-white/90 text-sm border border-blue-500/30">
-                    Search...
-                  </div>
-                  
-                  {/* UI/UX Labels */}
-                  <div className="flex gap-2 mt-1">
-                    <div className="bg-blue-600 px-4 py-1.5 rounded text-white text-sm font-bold">
-                      UI
-                    </div>
-                    <div className="bg-gray-600 px-4 py-1.5 rounded text-white text-sm font-bold">
-                      UX
-                    </div>
-                  </div>
-                  
-                  {/* Icons and elements */}
-                  <div className="grid grid-cols-4 gap-2 mt-3">
-                    <div className="bg-blue-500/30 rounded-lg p-2.5 flex items-center justify-center border border-blue-400/20">
-                      <div className="w-7 h-7 bg-blue-500 rounded" />
-                    </div>
-                    <div className="bg-blue-500/30 rounded-lg p-2.5 flex items-center justify-center border border-blue-400/20">
-                      <div className="w-7 h-7 bg-blue-400 rounded-full" />
-                    </div>
-                    <div className="bg-blue-500/30 rounded-lg p-2.5 flex items-center justify-center border border-blue-400/20">
-                      <div className="w-6 h-6 border-2 border-blue-400 rounded" />
-                    </div>
-                    <div className="bg-blue-500/30 rounded-lg p-2.5 flex items-center justify-center border border-blue-400/20">
-                      <div className="w-8 h-4 bg-blue-500 rounded" />
-                    </div>
-                  </div>
-                  
-                  {/* Chart elements */}
-                  <div className="mt-3 flex gap-2">
-                    <div className="flex-1 bg-blue-500/20 rounded-lg p-3 border border-blue-400/20">
-                      <div className="flex gap-1.5 items-end h-14">
-                        <div className="flex-1 bg-blue-500 rounded-t" style={{ height: '50%' }} />
-                        <div className="flex-1 bg-blue-400 rounded-t" style={{ height: '75%' }} />
-                        <div className="flex-1 bg-blue-500 rounded-t" style={{ height: '35%' }} />
-                        <div className="flex-1 bg-blue-400 rounded-t" style={{ height: '90%' }} />
-                        <div className="flex-1 bg-blue-500 rounded-t" style={{ height: '60%' }} />
+              <div className="relative w-full max-w-5xl h-96 bg-gray-900 rounded-2xl border-2 border-red-500 p-6 shadow-2xl overflow-hidden">
+                {/* UI/UX Elements inside - Animated Carousel */}
+                <div className="absolute inset-0 flex flex-col">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentProjectIndex}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.5 }}
+                      className="relative w-full h-full flex flex-col"
+                    >
+                      {/* Project Image Background/Container */}
+                      <div className="relative flex-1 w-full overflow-hidden">
+                        <Image
+                          src={recentProjects[currentProjectIndex].image}
+                          alt={recentProjects[currentProjectIndex].title}
+                          fill
+                          className="object-cover opacity-60 group-hover:opacity-80 transition-opacity"
+                        />
+                        <div className={`absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent`} />
+                        
+
                       </div>
-                    </div>
-                  </div>
-                  
-                  {/* Play button and other elements */}
-                  <div className="flex items-center gap-3 mt-2">
-                    <div className="w-8 h-8 bg-blue-500/40 rounded-full flex items-center justify-center border border-blue-400/30">
-                      <div className="w-0 h-0 border-l-[6px] border-l-white border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-0.5" />
-                    </div>
-                    <div className="flex-1 h-1 bg-gray-700 rounded-full" />
-                  </div>
-                  
-                  {/* Confirm button with hand */}
-                  <div className="mt-auto flex items-center gap-2">
-                    <div className="bg-green-500/40 px-4 py-2 rounded-lg text-white text-sm border border-green-400/30">
-                      Confirm
-                    </div>
-                    <div className="text-white/60 text-xl">👋</div>
-                  </div>
+
+                      {/* Bottom Section with Text */}
+                      <div className="p-6 mt-auto bg-gray-900/80 backdrop-blur-sm border-t border-white/10">
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex-1">
+                            <div className="text-[10px] uppercase tracking-wider text-blue-400 font-bold mb-1">
+                              Proyecto Reciente
+                            </div>
+                            <div className="text-white font-bold text-sm truncate">
+                              {recentProjects[currentProjectIndex].title}
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <div className="bg-green-500/20 px-3 py-1.5 rounded-full text-green-400 text-[10px] font-bold border border-green-500/30 whitespace-nowrap animate-pulse">
+                              ultimos proyectos , en desarrollo
+                            </div>
+                            <div className="text-xl">🚀</div>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
               
-              {/* Small icons below */}
+              {/* Small icons below - Interactive Controls */}
               <div className="flex gap-3 mt-4 justify-center">
-                <div className="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center shadow-md">
+                <button
+                  onClick={prevProject}
+                  className="w-12 h-12 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center shadow-md hover:scale-105 transition-all active:scale-95"
+                  aria-label="Anterior proyecto"
+                >
                   <span className="text-white text-xl font-bold">←</span>
-                </div>
-                <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center shadow-md">
-                  <span className="text-white text-lg">⚙</span>
-                </div>
-                <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center shadow-md">
-                  <span className="text-white text-lg font-bold">S</span>
-                </div>
+                </button>
+                
+                <button
+                  onClick={togglePause}
+                  className={`w-12 h-12 ${isPaused ? 'bg-green-500' : 'bg-orange-500'} rounded-lg flex items-center justify-center shadow-md hover:scale-105 transition-all active:scale-95`}
+                  aria-label={isPaused ? "Reanudar" : "Pausar"}
+                >
+                  <span className="text-white text-xl font-bold">{isPaused ? "▶" : "II"}</span>
+                </button>
+
+                <button
+                  onClick={nextProject}
+                  className="w-12 h-12 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center shadow-md hover:scale-105 transition-all active:scale-95"
+                  aria-label="Siguiente proyecto"
+                >
+                  <span className="text-white text-xl font-bold">→</span>
+                </button>
               </div>
             </motion.div>
           </div>

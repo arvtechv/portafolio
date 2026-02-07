@@ -97,7 +97,7 @@ export default function HeroSection() {
             >
               <div className="w-full max-w-md h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 dark:from-blue-500/10 dark:to-purple-500/10 rounded-2xl backdrop-blur-sm border border-gray-200 dark:border-gray-800 shadow-2xl flex items-center justify-center overflow-hidden">
                 <Image
-                  src="/inicial.png"
+                  src="/inicial.webp"
                   alt="Imagen inicial"
                   width={400}
                   height={400}

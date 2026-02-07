@@ -23,7 +23,7 @@ const projects = [
     image: "💼",
     tags: ["Next.js", "TypeScript", "TailwindCSS"],
     demo: "",
-    github: "https://github.com/carlosdelangel/portafolio-web",
+    github: "https://github.com/arvtechv/portafolio",
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const projects = [
     image: "🐍",
     tags: ["Flutter", "Dart", "Games"],
     demo: "",
-    github: "https://github.com/carlosdelangel/snake-game",
+    github: "https://github.com/arvtechv/portafolio",
   },
   {
     id: 4,
@@ -41,25 +41,26 @@ const projects = [
     image: "🛒",
     tags: ["Flutter", "Firebase", "Mobile"],
     demo: "",
-    github: "https://github.com/carlosdelangel/app-mercados",
+    github: "https://github.com/arvtechv/portafolio",
   },
   {
     id: 5,
-    title: "Punto de Venta",
+    title: "Nomad Manager",
     description: "Sistema completo de punto de venta (POS) desarrollado en Flutter con arquitectura multiplataforma. Diseñado para funcionar de manera nativa tanto en dispositivos móviles Android como en equipos de escritorio Windows y Linux. Enfocado en escalabilidad empresarial, rendimiento offline con sincronización automática, gestión de inventario, facturación electrónica y una experiencia de usuario intuitiva para operadores.",
-    image: "💳",
+    image: "/nomadmanager.png",
     tags: ["Flutter", "Desktop", "Android"],
     demo: "",
     github: "https://github.com/carlosdelangel/punto-venta",
+    playstore: "https://play.google.com/store/apps/details?id=com.ar.punto_venta&pcampaignid=web_share",
   },
   {
     id: 6,
     title: "Login Flutter",
     description: "Módulo de autenticación robusto desarrollado en Flutter integrado con Firebase Authentication. Implementa una pantalla de inicio de sesión con diseño moderno, validación de formularios en tiempo real, manejo seguro de credenciales, recuperación de contraseña, y una arquitectura modular que facilita el mantenimiento, escalabilidad y reutilización en múltiples proyectos.",
-    image: "/login.png",
+    image: "/login.webp",
     tags: ["Flutter", "Firebase Auth", "UI/UX"],
     demo: "",
-    github: "https://github.com/carlosdelangel/login-flutter",
+    github: "https://github.com/arvtechv/portafolio",
   },
   {
     id: 7,
@@ -68,17 +69,36 @@ const projects = [
     image: "/spa.jpg",
     tags: ["PHP", "MySQL", "HTML/CSS"],
     demo: "",
-    github: "https://github.com/carlosdelangel/spa-embudo",
+    github: "https://github.com/arvtechv/portafolio",
   },
   {
     id: 8,
     title: "Niddo App",
     description: "Aplicación móvil educativa en desarrollo para gestión y control de estudiantes de nivel preescolar y primaria. Desarrollada en Flutter y Dart, similar a LiveKid, permite a instituciones educativas gestionar asistencia, comunicaciones con padres de familia, reportes académicos, actividades diarias y seguimiento del progreso estudiantil. Incluye perfiles diferenciados para directores, maestros y padres, con notificaciones en tiempo real y almacenamiento seguro de datos.",
-    image: "/niddo.png",
+    image: "/niddo.webp",
     tags: ["Flutter", "Dart", "Firebase"],
     demo: "",
-    github: "https://github.com/carlosdelangel/nido-app",
+    github: "https://github.com/carvtechv/portafolio",
   },
+    {
+    id: 9,
+    title: "Nomad Manager Desk",
+    description: "Version de escritorio de Nomad Manager, manejo de inventario y mas ",
+    image: "/nmDesk.png",
+    tags: ["Flutter", "Dart", "Firebase"],
+    demo: "",
+    github: "https://github.com/carvtechv/portafolio",
+  },
+  {
+  id: 10,
+  title: "Carreras K-POP",
+  description: "Videojuego de carreras estilo endless runner desarrollado en Unity, ambientado en un universo visual inspirado en el K-POP. El jugador controla a un personaje idol que corre a gran velocidad por escenarios dinámicos con obstáculos, rampas y coleccionables. El juego implementa generación procedural de pistas, sistema de carriles (izquierda, centro y derecha), físicas optimizadas para dispositivos móviles, animaciones integradas mediante Mixamo, sistema de puntuación y monedas, aumento progresivo de dificultad y una estética colorida con efectos visuales sincronizados al ritmo musical. Proyecto enfocado en optimización, gameplay fluido y experiencia arcade.",
+  image: "/ckpop.png", 
+  tags: ["Unity", "C#", "Game Development", "Endless Runner", "Mobile Game"],
+  demo: "", // puedes poner un video de YouTube o itch.io
+  github: "https://github.com/carlosdelangel/carreras-kpop-unity",
+  playstore: "", // cuando lo publiques
+}
 ];
 
 export default function ProjectsSection() {

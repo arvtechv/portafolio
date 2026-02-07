@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Send, Mail, MapPin, Phone } from "lucide-react";
 
 export default function ContactSection() {
+  // Estados para manejo de envío
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,13 +20,36 @@ export default function ContactSection() {
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
-    // Aquí puedes integrar EmailJS o Formspree
-    // Por ahora, simulamos el envío
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Reemplaza estos valores con tus credenciales de EmailJS
+      // O mejor aún, usa variables de entorno: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_id";
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_id";
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "public_key";
+
+      // Verifica si las credenciales están configuradas
+      if (serviceId === "service_id" && publicKey === "public_key") {
+        console.warn("EmailJS no está configurado. Revisa el archivo .env.local");
+        // Simulación para desarrollo si no hay keys
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      } else {
+        await emailjs.send(
+          serviceId,
+          templateId,
+          {
+            from_name: formData.name,
+            from_email: formData.email,
+            message: formData.message,
+            to_name: "Carlos del Ángel", // Tu nombre
+          },
+          publicKey
+        );
+      }
+
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
+      console.error("Error al enviar email:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);

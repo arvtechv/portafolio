@@ -7,12 +7,12 @@ const socialLinks = [
   {
     name: "GitHub",
     icon: Github,
-    href: "https://github.com/carlosdelangel",
+    href: "https://github.com/arvtechv",
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    href: "https://linkedin.com/in/carlosdelangel",
+    href: "https://linkedin.com/in/carlosdart",
   },
   {
     name: "Twitter",
@@ -22,7 +22,7 @@ const socialLinks = [
   {
     name: "Email",
     icon: Mail,
-    href: "mailto:contacto@carlosdelangel.com",
+    href: "mailto:arvtechv@gmail.com",
   },
 ];
 
